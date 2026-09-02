@@ -1,273 +1,194 @@
-# 🏠 Home Cleaning Management Application
+# World Clock - Digital Clock Application
 
-A modern, fully-featured web application for organizing and tracking home cleaning tasks, managing rooms, and scheduling cleaning activities.
+A beautiful, responsive web application that displays the current time in multiple time zones around the world.
 
-## ✨ Features
+## Features
 
-### 📊 Dashboard
-- Quick overview of cleaning progress
-- Total tasks, completed tasks, and pending tasks count
-- Completion rate percentage
-- Recent tasks display
+✨ **Key Features:**
+- 📍 Display current time in multiple time zones simultaneously
+- 🎨 Modern, glassmorphic design with gradient background
+- 🌍 6 pre-configured time zones (easily customizable)
+- ➕ Add custom time zones with timezone names
+- ❌ Remove time zones as needed
+- 💾 Persistent storage using localStorage
+- ⏰ Real-time updates every second
+- 📱 Fully responsive design (desktop, tablet, mobile)
+- 🌙 Dark theme with green accent colors
 
-### 📝 Task Management
-- Create, edit, and delete cleaning tasks
-- Set task priority (Low, Medium, High)
-- Assign tasks to specific rooms
-- Set task frequency (Once, Daily, Weekly, Monthly)
-- Add due dates and descriptions
-- Filter tasks by status and room
-- Search functionality for quick task lookup
-- Mark tasks as completed with checkboxes
+## Included Time Zones (Default)
 
-### 🏡 Room Management
-- Add and manage multiple rooms
-- Set room types (Bedroom, Bathroom, Kitchen, Living Room, etc.)
-- Track room size (in square feet)
-- Customize room colors
-- View task count per room
-- Edit and delete rooms
+- **New York** - America/New_York (EST/EDT)
+- **London** - Europe/London (GMT/BST)
+- **Tokyo** - Asia/Tokyo (JST)
+- **Sydney** - Australia/Sydney (AEDT/AEST)
+- **Dubai** - Asia/Dubai (GST)
+- **Singapore** - Asia/Singapore (SGT)
 
-### 📅 Schedule View
-- Weekly cleaning schedule
-- Navigate between weeks
-- View tasks assigned to each day
-- Plan ahead and organize your cleaning routine
+## How to Use
 
-### 📈 Statistics & Analytics
-- Tasks breakdown by room
-- Tasks breakdown by priority
-- Overall completion progress with visual progress bar
-- Weekly activity tracking
-- Data-driven insights for better planning
+### Display Information
+Each clock card shows:
+- 🏙️ **City/Region Name** - The display name of the location
+- 🕐 **Time** - Current time in HH:MM:SS format
+- 📅 **Date** - Full date with day of week
+- 🌐 **Timezone Offset** - Timezone abbreviation
 
-## 🚀 Getting Started
+### Add a New Timezone
 
-### Installation
+1. Enter the timezone identifier in the first input field
+   - Examples: `Europe/Paris`, `America/Los_Angeles`, `Asia/Bangkok`
+2. Enter a display name in the second input field
+   - Example: `Paris`, `Los Angeles`, `Bangkok`
+3. Click the **"+ Add Timezone"** button or press Enter
+
+### Remove a Timezone
+
+- Click the **"Remove"** button on any clock card to delete it
+
+### Common Timezones
+
+- **Americas**: America/New_York, America/Chicago, America/Denver, America/Los_Angeles
+- **Europe**: Europe/London, Europe/Paris, Europe/Berlin, Europe/Moscow
+- **Asia**: Asia/Dubai, Asia/Kolkata, Asia/Bangkok, Asia/Hong_Kong, Asia/Tokyo, Asia/Shanghai
+- **Pacific**: Australia/Sydney, Australia/Melbourne, Pacific/Auckland, Pacific/Honolulu
+
+## Technical Details
+
+### Technologies Used
+- **HTML5** - Semantic markup structure
+- **CSS3** - Modern styling with:
+  - Gradient backgrounds
+  - Backdrop filters (glassmorphic effect)
+  - CSS Grid for responsive layout
+  - Smooth transitions and hover effects
+  - Mobile-first responsive design
+- **Vanilla JavaScript** - No dependencies required
+  - Intl API for timezone handling
+  - LocalStorage for data persistence
+  - DOM manipulation
+
+### Browser Compatibility
+- Chrome/Edge: ✅ Full support
+- Firefox: ✅ Full support
+- Safari: ✅ Full support
+- IE11: ⚠️ Limited support (no backdrop filter)
+
+## How It Works
+
+### Time Display
+The application uses the `Intl.DateTimeFormat` API with the `timeZone` option to:
+1. Get the current time in each specified timezone
+2. Format it according to the user's locale
+3. Extract timezone offset information
+
+### Data Persistence
+- Timezones are stored in browser's localStorage
+- Your custom selections persist across browser sessions
+- Default timezones load if no saved data exists
+
+### Auto-Update
+- Clock updates every second using `setInterval()`
+- Ensures accurate, real-time display
+
+## File Structure
+
+```
+application-cleaning-home/
+├── index.html      # HTML structure
+├── styles.css      # Styling and responsive design
+├── script.js       # JavaScript functionality
+└── README.md       # Documentation
+```
+
+## Installation & Running
+
 1. Clone or download the repository
 2. Open `index.html` in your web browser
 3. No installation or dependencies required!
 
-### First Time Setup
-The app comes pre-loaded with 3 sample rooms:
-- Living Room (300 sq ft)
-- Kitchen (200 sq ft)
-- Bedroom (250 sq ft)
+### Alternative: Local Server
+For better performance with CORS and caching:
+```bash
+# Using Python 3
+python -m http.server 8000
 
-All data is automatically saved to your browser's local storage.
+# Using Node.js (http-server)
+npx http-server
 
-## 📖 How to Use
-
-### Adding a Task
-1. Navigate to the **Tasks** tab
-2. Click the **"+ Add Task"** button
-3. Fill in the task details:
-   - **Task Name**: What needs to be cleaned (e.g., "Vacuum carpets")
-   - **Room**: Select the room
-   - **Priority**: Choose importance level
-   - **Frequency**: How often this task repeats
-   - **Due Date**: When the task should be completed
-   - **Description**: Additional notes (optional)
-4. Click **"Add Task"** to save
-
-### Adding a Room
-1. Navigate to the **Rooms** tab
-2. Click the **"+ Add Room"** button
-3. Enter room details:
-   - **Room Name**: Name of the room
-   - **Room Type**: Category (Bedroom, Bathroom, Kitchen, etc.)
-   - **Room Size**: Square footage (optional)
-   - **Color Theme**: Choose a color to personalize
-4. Click **"Add Room"** to save
-
-### Marking Tasks as Complete
-1. In the **Tasks** tab, find the task
-2. Click the checkbox next to the task name
-3. The task will be marked as completed
-4. Uncheck to mark as pending again
-
-### Viewing Your Schedule
-1. Navigate to the **Schedule** tab
-2. See tasks organized by day of the week
-3. Use **"← Previous"** and **"Next →"** buttons to navigate weeks
-4. Plan your cleaning week ahead
-
-### Checking Statistics
-1. Go to the **Statistics** tab
-2. View:
-   - Tasks breakdown by room
-   - Tasks by priority level
-   - Overall completion progress
-   - This week's activity
-
-## 🎨 User Interface
-
-### Tabs
-- **Dashboard**: Quick overview and recent tasks
-- **Tasks**: Full task management
-- **Rooms**: Room management and organization
-- **Schedule**: Weekly planning view
-- **Statistics**: Analytics and insights
-
-### Color Coding
-- 🔴 **Red**: High priority tasks
-- 🟠 **Orange**: Medium priority tasks
-- 🔵 **Blue**: Low priority tasks
-- ✅ **Green**: Completed tasks
-
-## 💾 Data Persistence
-
-All your data is automatically saved to your browser's local storage:
-- Tasks are persisted between sessions
-- Rooms and their configurations are saved
-- Preferences are remembered
-- No internet connection needed to use the app
-
-### Clearing Data
-To reset the app:
-1. Open browser Developer Tools (F12)
-2. Go to Console tab
-3. Type: `localStorage.clear()`
-4. Press Enter
-5. Refresh the page
-
-## 🔧 Technical Details
-
-### Technologies Used
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with gradients and animations
-- **Vanilla JavaScript**: No frameworks or dependencies
-- **LocalStorage API**: Data persistence
-
-### Browser Compatibility
-- ✅ Chrome/Edge (Latest)
-- ✅ Firefox (Latest)
-- ✅ Safari (Latest)
-- ✅ Mobile browsers
-
-### Responsive Design
-- Desktop optimized
-- Tablet friendly
-- Mobile responsive
-- Touch-friendly interface
-
-## 🎯 Features in Detail
-
-### Task Priority System
-- **High**: Urgent tasks that need immediate attention
-- **Medium**: Regular maintenance tasks
-- **Low**: Optional tasks that can wait
-
-### Task Frequency Options
-- **Once**: One-time task
-- **Daily**: Task repeats every day
-- **Weekly**: Task repeats every week
-- **Monthly**: Task repeats every month
-
-### Room Types
-- Bedroom
-- Bathroom
-- Kitchen
-- Living Room
-- Dining Room
-- Hallway
-- Laundry Room
-- Office
-- Garage
-- Other
-
-## 📱 Mobile Experience
-
-The app is fully responsive and works great on mobile devices:
-- Touch-friendly buttons and inputs
-- Responsive grid layouts
-- Optimized for small screens
-- All features accessible on mobile
-
-## 💡 Tips & Best Practices
-
-1. **Plan Ahead**: Use the Schedule tab to plan your week
-2. **Set Priorities**: Mark high-priority tasks so they stand out
-3. **Use Frequencies**: Recurring tasks save time entering same tasks repeatedly
-4. **Room Organization**: Create rooms for better task organization
-5. **Regular Review**: Check Statistics tab to track progress
-6. **Due Dates**: Set realistic due dates to avoid overwhelming yourself
-
-## 🔄 Workflow Example
-
-1. **Add Rooms**: Create rooms in your home
-2. **Create Tasks**: Add cleaning tasks to rooms
-3. **Schedule**: Assign due dates to spread tasks throughout the week
-4. **Execute**: Work through tasks and mark them complete
-5. **Review**: Check Statistics to monitor progress
-6. **Plan**: Schedule next week's tasks
-
-## ⚙️ Customization
-
-### Modifying Sample Rooms
-Edit the `loadData()` function in `script.js` to change default rooms:
-
-```javascript
-appData = {
-    rooms: [
-        { id: generateId(), name: 'Your Room', type: 'type', size: 0, color: '#667eea' },
-        // Add more rooms...
-    ],
-    tasks: [],
-    currentWeekStart: getMonday(new Date())
-};
+# Using PHP
+php -S localhost:8000
 ```
 
-### Changing Colors
-All colors can be customized through CSS in `styles.css`.
+Then navigate to `http://localhost:8000`
 
-## 🐛 Troubleshooting
+## Customization
 
-### Tasks Not Saving
-- Check if localStorage is enabled in browser
-- Ensure cookies are enabled
-- Clear browser cache and try again
+### Modify Default Timezones
+Edit the `defaultTimeZones` array in `script.js`:
 
-### Modals Not Opening
-- Refresh the page
+```javascript
+const defaultTimeZones = [
+    { name: 'Your City', timezone: 'Continent/City' },
+    // Add more...
+];
+```
+
+### Change Color Scheme
+Update the gradient and accent colors in `styles.css`:
+
+```css
+body {
+    background: linear-gradient(135deg, #YOUR_COLOR_1 0%, #YOUR_COLOR_2 100%);
+}
+
+.time-display {
+    color: #YOUR_ACCENT_COLOR;
+}
+```
+
+### Adjust Update Frequency
+Modify the interval in `script.js`:
+
+```javascript
+setInterval(updateAllClocks, 500); // Update every 500ms instead of 1000ms
+```
+
+## Troubleshooting
+
+### Invalid Timezone Error
+- Ensure you're using the correct IANA timezone identifier
+- Format: `Continent/City` (e.g., `Europe/Paris`, not `GMT+1`)
+- Refer to the [IANA Timezone Database](https://www.iana.org/time-zones)
+
+### Clocks Not Updating
 - Check browser console for errors (F12)
 - Ensure JavaScript is enabled
+- Try clearing localStorage: `localStorage.clear()` in console
 
-### Display Issues
-- Try different screen size
-- Clear browser cache
-- Update your browser
+### Display Issues on Mobile
+- The app is fully responsive
+- Try rotating your device or resizing the browser window
+- Ensure you're using a modern browser
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
 Potential features to add:
-- 📤 Export/Import data as JSON
-- 🔔 Notifications and reminders
-- 👥 Multiple user profiles
-- 🎨 Theme customization
-- 📊 More detailed analytics
-- 🔄 Sync across devices
-- 📱 Progressive Web App (PWA) support
-- ⏰ Time tracking per task
+- 🎯 Analog clock display option
+- 🔊 Alarm functionality for specific timezones
+- 🌓 Light/Dark theme toggle
+- 📊 Time zone differences calculator
+- 🔍 Timezone search functionality
+- 🎨 Custom color themes
+- 📍 Geolocation-based timezone detection
 
-## 📝 Notes
-
-- Data is stored locally in your browser
-- No data is sent to any server
-- Each browser/device has separate data
-- Clearing browser data will delete app data
-- Works offline once loaded
-
-## 📄 License
+## License
 
 This project is open source and available for personal and commercial use.
 
-## 🎉 Enjoy!
+## Credits
 
-Keep your home clean and organized with this easy-to-use cleaning management app!
-
-For questions or suggestions, feel free to contribute or create issues.
+Created with ❤️ for global teams and world travelers!
 
 ---
 
-**Happy Cleaning! 🧹✨**
+**Enjoy keeping track of time across the globe!** 🌍⏰
